@@ -1,0 +1,1156 @@
+\documentclass{article}                     % 文档
+\usepackage{ctex}                           % 写了才能显示中文
+\usepackage{microtype}                      % （英文）排版优化
+\usepackage[a4paper]{geometry}              % 页面设置，包括页面大小与页边距
+% \usepackage{fancyhdr}                     % 页眉页脚
+% \usepackage{pdfpages}                     % 使用pdf作为封面
+% \usepackage[left=2.2cm,right=1.8cm,top=2.0cm,bottom=2.5cm]{geometry}% 上例调整左边距2.2cm，右边距1.8cm，上边距2.0cm，底边距2.5cm。
+% \geometry{papersize={18.00cm,23.00cm}}
+
+\usepackage{amsthm}                         % 定理、命题、证明、解、例子相关的宏包
+\usepackage{amsmath}                        % AMS 数学公式扩展，罗马数字
+\usepackage{amssymb}                        % 在 amsfonts 基础上将 AMS 扩展符号定义成命令，希腊字母
+\usepackage{amsfonts}                       % AMS 扩展符号的基础字体支持，大写空心粗体字母
+% \usepackage{mathtools}                    % 数学公式扩展宏包，提供了公式编号定制和更多的符号、矩阵等
+% \usepackage{nicematrix}                   % 提供的 NiceArray 等环境
+% \usepackage{siunitx}                      % 国际单位制，例如科学记数法，国际单位
+% \usepackage{newtxmath}                    % 将数学字体设置为罗马形式的衬线体
+\usepackage{bm}                             % 提供将数学符号加粗的命令 \bm
+\numberwithin{equation}{section}            % 公式按章节编号
+
+\usepackage{enumitem}                       % 列表设置，\setlist 进行全局设置。例如默认的列表之间间距太大，使用 \setlist{nosep} 取消额外间距。
+\usepackage{graphicx}                       % 支持插图
+% \usepackage{tabularx}                     % 定宽表格，可申明宽度，也可自动排版
+% \usepackage{threeparttable}               % 表格
+% \usepackage{multirow}                     % \multirow[竖直位置]{合并行数}{列宽}{内容} 命令可以用于合并表格的行。其中，“竖直位置可以设置为 c 中间对齐（默认）、t 顶部对齐或 b 底部对齐；“列宽”可以设置为 * 以自动进行调整。
+% \usepackage{booktabs}                     % 标准三线表定义，分别是 \toprule、\midrule 和 \bottomrule。特别地，使用 \cmidrule 命令可以只绘制部分列的中间横线
+% \usepackage{longtable}                    % 表格特别长时，处理跨页表格
+% \usepackage{subcaption}                   % 图片并排，提供的 \subcaptionbox 命令
+% \usepackage{tikz}                         % 绘制数学图形
+\usepackage{caption}                        % 对图表名称的格式进行设置，\captionsetup{labelsep=space} 将图表编号与名字之间的间隔设置为了空格（其他的类似还有分号、句点等习惯）
+\graphicspath{{./figures/}}                 % 图片存储位置
+\numberwithin{figure}{section}              % 图片按章节编号
+\numberwithin{table}{section}               % 表格按章节编号
+\captionsetup{labelsep=space}
+
+
+\makeatletter                               % 罗马字符\rmnum{数字}大写罗马数字 ： \Rmnum{数字}
+\newcommand{\rmnum}[1]{\romannumeral #1}    % 罗马字符
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother                                % 罗马字符
+
+\DeclareMathOperator{\spann}{span}          % 补充定义\span
+\newcommand\spanset[1]{\ensuremath\spann(#1)}
+
+\newcommand\keywords[1]{\textbf{Keywords}: #1}% 关键字环境
+
+\newtheorem{theorem}{\indent 定理}[section] % 中文定理环境
+\newtheorem{lemma}[theorem]{\indent 引理}   % \indent 为了段前空两格
+\newtheorem{proposition}[theorem]{\indent 命题}
+\newtheorem{corollary}[theorem]{\indent 推论}
+\newtheorem{definition}{\indent 定义}[section]
+\newtheorem{example}{\indent 例}[section]
+\newtheorem{remark}{\indent 注}[section]
+\newenvironment{solution}{\begin{proof}[\indent\bf 解]}{\end{proof}}
+\renewcommand{\proofname}{\indent\bf 证明}
+
+\usepackage[backend=bibtex]{biblatex}       % 参考文献编译文件，没有引用参考文献时调用该宏包
+% \usepackage{gbt7714}                      % China standard style
+% \bibliographystyle{gbt7714-numerical}     % numerical / author-year
+% \setlength{\bibsep}{0.5ex}                % vertical spacing between references
+% \usepackage{notoccite}                    % remove citations in TOC and ensure correct numbering
+
+% \usepackage{listings}                     % 提供了排版关键字高亮的代码环境 lstlisting 以及对版式的自定义。类似宏包有minted
+\usepackage[hidelinks]{hyperref}            % 目录超链接
+% \usepackage[colorlinks=false,pdfborder={0 0 0}]{hyperref}% 超链接，一般放到导言区最后一行
+% \usepackage{cleveref}                     % 用于交叉引用的时候
+
+\title{线性泛函导论}                             % 长度最好不要超过20个字
+\author{xxx}
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%主体区
+\begin{document}
+%\begin{titlepage}	                        % 自制封面
+%\includepdf[pages={1}]{cover.pdf}          % 封面位置
+%\end{titlepage}                            % 自制封面
+\maketitle                                  % 本页为标题页
+hello！LaTeX
+
+\newpage                                    % 新一页
+\tableofcontents                            % 目录
+\newpage                                    % 新一页
+
+\section{前言}
+空间解析几何是在三维欧氏空间中研究，复杂一点会涉及到仿射几何；高等代数是在有限维线性空间中研究，并通过基来研究线性空间、通过矩阵表示来研究线性映射；数学分析是在欧氏空间中研究，复杂一点会在度量空间中研究，但本科期间一般不会在拓扑空间中研究；抽象代数是通过研究空间与映射的代数结构，来研究其代数性质。
+这些学科虽然并没有被称为泛函分析，但都与泛函分析有莫大的关联。在泛函中我们会研究无限维空间的分析学、代数学、几何学性质，具体为有界性、连续性、完备性、稠密性、可分性、紧性、开集、闭集、基、内积表示、特征值、投影，闭图像、凸性、延拓等。
+本科期间的泛函分析主要为线性泛函（只研究线性算子），包括空间（对象的结构）、算子（空间的关系）、泛函（元素的定量分析）的研究。常见的空间有度量空间，赋范线性空间，内积空间，以及特别的 Banach 空间、 Helbert 空间；空间算子有线性算子，较特别的为有界线性算子（与连续线性算子等价）、紧算子。常见的泛函有范数等。
+具有某种性质的个体事物的全体即为一个集合。而描述元素之间关系的则是这个集合的结构，具有结构的集合也被称为空间。空间之间的联系则用算子描述（全体算子也会构成一个新的空间，全体有界线性算子$B(E,F)$，全体紧算子$K(E,F)$），若是空间与数域的联系则用更加特殊的算子——泛函描述（空间上的全部线性泛函会构成一个新的空间，称为原空间的对偶空间$E^\ast$）。
+好的算子应当反应空间的结构，故而空间与算子间有一些常见的搭配：度量空间与连续映射；线性空间与线性映射；赋范线性空间与有界线性算子；Helbert空间与共轭算子。
+分析的研究工具为序列，特别的有Cauchy列；几何的研究工具为开球，特别的有单位球面；代数的研究工具为基、线性组合、内积表示等。
+由于泛函分析仍是属于分析学，故而本文的重点在于其分析学的结构，即这里不再将度量空间视为研究对象，而将其视为一种对本书都适用的度量结构。并将带有度量结构的赋范线性空间（特别的有Banach空间）、带有度量结构的内积空间（特别的有Helbert 空间）视为该种结构的具体应用。
+文中内容基于前人的智慧整理而来。希望对于大家线性泛函的理解有帮助。
+
+\section{度量结构}
+\begin{definition}[度量空间]
+    度量空间是一个含有对于所有$x,y,z\in X$满足下面三个条件的函数$d:X\times X\to \mathbb{R} $的集合
+    \begin{enumerate}
+        \item 三角不等式$d(x,y)\le d(x,z)+d(z,y)$
+        \item $d(x,y)=d(y,x)$
+        \item $d(x,y)\ge 0$当且仅当$x=y$时，$d(x,y)=0$
+    \end{enumerate}
+    这里的函数$d(\cdot,\cdot)$被称为距离函数（度量函数）。有时我们记度量空间$X$为$(X,d)$。
+\end{definition}
+\begin{remark}
+    度量空间中可以定义开集$A$（如果集合$A\subset X$中的点$x$，存在$A$中的开球$B(x,r):=\{z\in X|d(z,x)<r,r>0\}$，则称集合$A$为开集。），并基于开集定义闭集（如果$A^c=\{x\in X|x\notin A,A\subset X\}$为开集，则称集合$A$为闭集）。
+    
+    易证开球$B(x,r):=\{z\in X|d(z,x)<r,r>0\}$、全集（$X$）为开集，并规定$\emptyset $为开集。也易证闭球$\bar{B}(x,r):=\{z\in X|d(z,x)\le r,r>0\}$，全集（$X$），$\emptyset $为闭集。
+    开集$A_\alpha $的无穷并$\bigcup _{\alpha \in I}A_{\alpha }$仍为开集；开集$A_k $的有限交$\bigcap _{k=1}^{m}A_{k}$仍为开集；闭集$A_k $的有限并$\bigcup _{k=1}^{m}A_{k}$仍为闭集；闭集$A_\alpha $的无穷交$\bigcap _{\alpha \in I}A_{\alpha }$仍为闭集。
+    
+    可证$A$的内部$\int{A}:=\{x\in A|\mbox{存在开球}B(x,r)\subset A,r>0\}$为开集，并将点$x\in \int{A}$称为$A$的内点。
+    可证$A$的闭包$\bar{A}:=(\int{(A^c)})^c$为闭集，并且$A$为闭集当且仅当$A=\bar{A}$。特别的，$A$的闭包也可由度量空间中的序列定义：$\bar{A}:=\{x\in A|\forall  (x_k)\in A ,\exists x\in \bar{A},\mbox{有}\lim_{k\to \infty}d(x_k,x)=0\}$
+\end{remark}
+\begin{remark}
+    度量空间中可以定义序列$(x_k)_{k\ge 1}$，并简写为$(x_k)$。基于度量函数$d(x,y)$可以构造具有特殊性质的序列——Cauchy 列（如果$\lim_{i,j\to \infty}d(x_i,d_j)=0$，则称该序列为Cauchy 列）。不但如此，由度量函数$d(x,y)$，还可以定义序列收敛（如果$\lim_{n\to \infty}d(x_n,x_0)=0$，则该序列有$\lim_{k\to \infty}x_k=x_0$）。
+\end{remark}
+\begin{remark}
+    度量空间中可以定义完备性（如果对于该度量空间$(X,d)$中任意Cauchy列都有序列极限，且极限值在该度量空间中，即$\lim_{(n\to \infty)}d(x_n,x_0)=0$，且$x_0\in X$）。并且我们可以对每一个度量空间进行完备化（构造等距映射使该度量空间嵌入到一个完备的度量空间中）。完备空间的闭子空间也完备，故而Banach空间与Helbert空间的闭子空间仍是Banach空间与Helbert空间。完备的闭度量空间中，边界的并不会含有内点（Baire categary Theorem），该性质可以推出许多有意思的性质，例如一致有界定理（或称共鸣定理，可用来研究物理学中的共振），又例如开映射定理，又例如闭图像定理（$Tx_n$若为闭的，则收敛，在证明算子连续性时有较大作用，可以省略一个步骤），Hahn-Banach Theorem（基于线性空间（甚至不需要范数），只要其线性函数可以被控制，则该函数可以被延拓）。
+\end{remark}
+
+稠密性、可分性
+\begin{remark}
+    度量空间中可以定义紧性
+    \begin{enumerate}
+        \item 相对紧（紧性的必要条件）：对于度量空间$(X,d)$中的子集$K$，如果$K$的每一个序列$(x_k)_{k\ge 1}$都有收敛子列$\lim_{i\to\infty}x_{k_i}\to x$，其中$x\in X$，（不要求子列的极限在子集$K$中），则称子集$K$是预紧的。
+        \item 列紧的（紧性的充分条件）：对于度量空间$(X,d)$中的子集$K$，如果$K$既是预紧的，也是有界的，则子集$K$是紧的。
+        \item 完全有界的（紧性的必要条件）：对于度量空间$(X,d)$中的子集$K$，如果存在大小大小可控的有限个开球的覆盖，即$\forall \varepsilon >0,\exists \mbox{有限多个开球}B(x_i,\varepsilon ),x_i\in K,i\in\{1,2,\cdots,m\},\mbox{使得}\bigcup _{i=1}^{m}B(x_i,\varepsilon )\supset K$
+        \item 紧的：任意开覆盖存在有限子覆盖，则为紧的。
+    \end{enumerate}
+\end{remark}
+\begin{remark}
+    部分度量空间可以范数化的（如果一个赋范线性空间$(E,\| \cdot\Vert )$中的范数可以诱导出对应的度量$d(x,y)=\| x-y\Vert $，则称该度量空间$(E,d(x,y)=\| x-y\Vert )$是可以范数化的。寻求这种度量空间的最好方法是直接由赋范线性空间构造度量结构，从而成为度量空间，则该度量空间（只看其度量结构，忽视其线性结构与范数结构）必然必然可以被范数化）。从度量空间的角度，这些度量空间具有了线性结构，从而可以研究其代数性质（主要是谱性质，紧算子的特征向量，特征值，特征空间等）；从赋范线性空间的角度看，这些赋范线性空间具有了分析结构（由度量结构可以研究其有界性、极限、完备性、紧性）。其中完备的赋范线性空间为 Banach 空间
+\end{remark}
+\begin{remark}
+    部分度量空间可以内积化的（如果一个内积空间中内积可以诱导出相应的范数，而该范数又可诱导出相应的度量函数，则称该度量空间是可以内积化的。寻求这种度量空间的最好方法是直接由内积空间构造范数结构，再构造度量结构，从而成为度量空间，则该度量空间（只看其度量结构，忽视其线性结构与内积结构）必然必然可以被内积化）。从度量空间的角度，这些度量空间具有了线性结构，从而可以研究其代数性质（主要是线性泛函的内积表示，谱性质，紧算子的特征向量，特征值，特征空间等），几何性质（投影，闭图像，闭凸集）；从赋范线性空间的角度看，这些赋范线性空间具有了分析结构（由度量结构可以研究其有界性、极限、完备性、紧性）。完备的内积空间被称为Helbert 空间。
+\end{remark}
+
+
+\section{赋范线性空间}
+\begin{definition}[赋范线性空间]
+    赋范线性空间$E$是一个定义在数域$\mathcal{F} (=\mathbb{R} or \mathbb{C} )$上，且含有两个算子，一个泛函的集合。其中：
+    \begin{enumerate}
+        \item 加法算子（$+:V+V\to V.$ ）：$V$中的加法$+$是一个满足交换律与结合律并含有幺元与逆元的 Abelian 群。
+        \item 数乘算子（$p:\mathcal{F} \times V\to V$）：$V$中的数乘$p$是一个满足结合律与分配律的含幺结合代数。
+        \item 范数泛函（$\| \cdot \Vert :E\to \mathbb{R} $）：
+        \begin{enumerate}
+            \item 对于所有$x,y\in E$有$\| x+y \Vert \le \| x \Vert +\| y \Vert $
+            \item 对于每一个$x\in E,\alpha \in \mathcal{F} $有$\| \alpha x \Vert =|\alpha |\cdot \| x \Vert$
+            \item $\|x \Vert\ge 0 $，当且仅当$x=0$时，$\|x \Vert = 0$
+        \end{enumerate}
+    \end{enumerate}
+    有时我们记赋范线性空间$E$为$(E,\| \cdot\Vert )$，或者简写为$n.v.s.$
+\end{definition}
+\begin{remark}
+    赋范线性空间中的两个算子可以构成线性空间，从而具有代数结构，可以研究简单的代数性质，包括？？？？？？？？？？我也不知道。而其中的范数则可以诱导出相应的度量，使该赋范线性空间具有第四种结构（由度量函数给予的），从而便于研究其分析学性质，包括完备性、紧性、有界性、连续性等。其中完备的赋范线性空间为 Banach 空间
+\end{remark}
+\begin{remark}
+    赋范线性空间中，基于诱导的度量结构，可以定义依范数的收敛（如果$\lim_{k\to \infty}\|x_k-x_0 \Vert=0$，则称序列$(x_k)$按范数收敛到$x_0$）
+\end{remark}
+
+\begin{remark}
+    Banach空间中的谱（spectrum）
+\end{remark}
+
+
+\section{内积空间}
+\begin{definition}内积空间
+    内积空间$\mathcal{H} $是一个定义在数域$\mathcal{F} (=\mathbb{R} or \mathbb{C} )$上，且含有两个算子和一个双线性函数的集合。
+    \begin{enumerate}
+        \item 加法算子（$+:V+V\to V.$ ）：$V$中的加法$+$是一个满足交换律与结合律并含有幺元与逆元的 Abelian 群。
+        \item 数乘算子（$p:\mathcal{F} \times V\to V$）：$V$中的数乘$p$是一个满足结合律与分配律的含幺结合代数。
+        \item 双线性函数（$(\cdot,\cdot) :\mathcal{H}\times \mathcal{H} \to \mathbb{R} $）：
+        \begin{enumerate}
+            \item 对称性：对于所有$u,v\in \mathcal{H} $有$(u,v)=(v,u) $
+            \item 正定性：$(u,u)\ge 0$，当且仅当$u=0$时，$(u,u)=0$
+            \item 第一变量线性：$(\lambda_1u_1u+\lambda_2u_2,v)=\lambda_1(u_1,v)+\lambda_2(u_2,v)$，其中$u_1,u_2\in \mathcal{H},\lambda\in \mathbb{R} $
+        \end{enumerate}
+    \end{enumerate}
+    具有对称性、正定性、线性性的双线性函数又被称为内积。有时我们记内积空间$\mathcal{H}$为$(\mathcal{H},(\cdot,\cdot) )$，或者简写为$i.p.s.$
+\end{definition}
+\begin{remark}
+    内积是$H\times H$上的连续函数（$x_n\to x$，$y_n\to y$，有$(x_n,y_n)\to(x,y)$，表明内积运算与极限运算可交换（极限存在时成立））
+\end{remark}
+\begin{remark}
+    内积空间中存在Cauchy-Schwarz 不等式（$(u,v)\le (u,u)^{\frac{1}{2}}(v,v)^{\frac{1}{2}},u,v\in H$）
+\end{remark}
+\begin{remark}
+    内积空间中可以诱导出范数（$|u|=(u,u)^{\frac{1}{2}},u\in H$，并可以由Cauchy-Schwarz 不等式证明其具有范数不等式），使内积空间具有范数结构，并有平行四边形法则（$\| x+y\Vert^2 \| x-y\Vert^2=2( \| x\Vert^2 +\| y\Vert^2 )$，这个等式的成立也是赋范线性空间是否可以内积化的充要条件）。内积空间可进一步由诱导出的范数诱导出度量函数（$d(u,v)=|u-v|=(u-v,u-v)^{\frac{1}{2}}$），使内积空间具有度量结构，从而可以研究内积空间（诱导出度量结构后）的完备性，紧性，有界性等。
+\end{remark}
+\begin{remark}
+    内积空间中可以定义两个向量的夹角（$\theta =\arccos {\frac{(u,v)}{\| u\Vert\| v\Vert  } }$），并进一步研究其正交性（若$(u,v)=0$，则称$u\bot v$）并得到勾股定理与正交补空间
+\end{remark}
+\begin{remark}
+    内积空间是严格凸的，但不是所有的赋范空间都是严格凸的
+\end{remark}
+\begin{remark}
+    部分内积空间在诱导出相应的度量结构后，若其中任一Cauchy列均有极限，则称该内积空间为Helbert空间。Helbert空间的闭子空间必为Helbert空间（由完备空间的闭子空间仍为完备空间，故而成立）。Helbert空间必然是自反的（若映射$J:E\to E^{\ast \ast },x\mapsto \xi ,E\in n.v.s$，有$J(E)=E^{\ast \ast }$，则称$E$是自反的）。Helbert空间中的点存在唯一正交分解。每一个可分的Helbert空间都含有一个正交基。
+\end{remark}
+
+
+$\spann {A}$ $A$中元素的线性组合
+
+
+
+
+
+
+
+
+
+\section{其它}
+\begin{definition}[Hemal基]
+    若含有非零元的线性子空间$X$的子集$H$满足
+    \begin{enumerate}
+        \item $H$中的元素线性无关
+        \item $X=\spann\{H\}$
+    \end{enumerate}
+    则称$H$为$X$的Hemal基
+\end{definition}
+
+\begin{definition}[代数基]
+    设$E$为赋范线性空间（$n.v.s$），$\{e_i\}_{i\in I}\subset E$（$I$不需要可数）。
+    如果$E$中的每一个点$x$都可以使用$\{e_i\}_{i\in I}$中有限的元素唯一线性组合（$x=\sum_{i\in J}x_ie_i$，$J$是有限集）表示，
+    则称$\{e_i\}_{i\in I}$为$E$的代数基。
+\end{definition}
+
+\begin{definition}[正交基]
+    $H$中的一个序列$(e_n)_{n\ge 1}$被称为$H$中的一个正交基，如果它满足：
+    \begin{enumerate}
+        \item $(e_n,e_m)=\delta _m^n$
+        \begin{equation*}
+            \delta _m^n:=\left\{\begin{matrix}
+                1&n=m \\
+                0&n\ne m
+              \end{matrix}\right.
+        \end{equation*}
+        \item $\spann\{e_n:n\in \mathbb{N} ^n\}$在$H$中稠密
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    如果$(e_n)_{n\ge 1}$是一个正交基，则对于每一个$u\in H$，我们有$u=\sum_{k=1}^{\infty}(u,e_k)e_k$，也就是说$u=\lim_{n\to \infty}\sum_{k=1}^{n}(u,e_k)e_k$，$|u|^2=\sum_{k=1}^{\infty}(u,e_k)^2$
+\end{remark}
+
+\begin{theorem}[Cauchy-Schwarz不等式]
+    对于内积空间$H$中任意两个元素$u,v$有：
+    $$(u,v)\le (u,u)^{\frac{1}{2}}(v,v)^{\frac{1}{2}}$$
+\end{theorem}
+
+\begin{theorem}[平行四边形法则]
+    对于内积空间$H$中任意两个元素$a,b$有：
+    $$|\frac{a+b}{2}|^2+|\frac{a-b}{2}|^2=\frac{1}{2}(|a|^2+|b|^2)$$
+    其中$|\cdot|$为内积诱导出的范数$|u |=(u,u)^{\frac{1}{2}}$
+\end{theorem}
+
+
+
+\begin{theorem}[Holder 不等式]
+    设$f\in L^p$，$g\in L^{p^{\prime}},p\in [1,\infty ]$，则$f\cdot g\in L^1$且
+    $$\int |f\cdot g|dx\| f\Vert_p \| g\Vert_{p^{\prime}} $$
+\end{theorem}
+
+\begin{theorem}[Minkowski 不等式]
+    如果$f,g\in L^p,p\in [1,\infty ]$，则
+    $$\| f+g\Vert_p \le \| f\Vert_p +\| g\Vert_p $$
+\end{theorem}
+
+
+\begin{theorem}[有界线性算子]
+    \begin{enumerate}
+        \item 有界线性算可以在两个赋范线性空间中定义。
+        \item 有界线性算子与连续线性算子等价。
+    \end{enumerate}
+\end{theorem}
+
+
+
+
+\begin{theorem}[紧算子]
+    \begin{enumerate}
+        \item 紧算子可以在两个Banach空间上定义。但较为出色的结论是在Helbert空间中得到的
+        \item 紧算子是有界线性算子，它最接近于有限维空间上的线性算子。
+        \item 在Helbert空间中（可以定义伴随算子）：紧算子的伴随算子$K^{\ast }$仍是紧算子（$if \ K\in \mathcal{K}(H),then \ K^{\ast}\in \mathcal{K}(H)$）。
+        \item 在Helbert空间中：紧算子空间$\mathcal{K}(H) $是有界线性算子空间$\mathcal{L}(H) $的闭线性子空间。
+    \end{enumerate}
+\end{theorem}
+
+
+
+\begin{definition}[谱理论]
+    \begin{enumerate}
+        \item 预解集$\rho (T):=\{\lambda \in \mathbb{R} :(T-\lambda I):E\to E\mbox{是双射}\}$
+        \item 谱$\sigma (T)=\mathbb{R}\setminus \rho (T)$
+        \item 所有本征值构成的集合$EV(T):=\{\lambda:N(T-\lambda I)\neq \{0\}\}$ ，并将$\lambda $称为$T$的本征值。且有$EV(T)\subset \sigma (T)$注意本征值不能取$0$
+        \item 零空间$N(T-\lambda I)\neq \{0\}$，也是本征值$\lambda \in EV(T)$对应的本征空间，并将向量$u\in N(T-\lambda I)\setminus \{0\}$称为$\lambda $的本征向量。
+        \item 特征向量
+    \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+    
+\end{lemma}
+
+\begin{remark}
+    共轭空间与对偶空间是一致的，但伴随算子与之是不同的
+\end{remark}
+
+\begin{remark}
+    双线性函数
+\end{remark}
+\begin{remark}
+    基、可分性
+\end{remark}
+\begin{remark}
+    紧算子
+\end{remark}
+\begin{remark}
+    特征向量
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{例子}
+\begin{example}[开集]
+    \begin{enumerate}
+        \item 有限维数组空间$\mathbb{R} ^n$
+        \item 离散度量空间$(A,d)$，其中$d(x,y)=1 or 0$当且仅当$x=y$时，$d(x,y)=0$。它的每一个子空间既是开集也是闭集
+        \item 赋范线性空间的有限维线性子空间是闭集，但其无限维线性子空间不一定为闭集
+        \item 有界线性算子空间$T(L^1(\mathbb{R} ))$
+    \end{enumerate}
+\end{example}
+
+
+\begin{example}[数域$\mathbb{R} $的向量空间（$v.s.$）]
+    \begin{enumerate}
+        \item $X=\{p(t):t\in \mathbb{R} \mbox{的多项式}\}$
+        \item $C[a,b]=\{f(t):t\in[a,b]\mbox{的连续函数}\}$
+        \item $\mathbb{R} ^n$（有限维数组空间）
+        \item $X=\{(x_1,x_2,\cdots):x_i\in \mathbb{R} ,i\in \mathbb{N} ^+\}$（实值序列构成的空间）
+    \end{enumerate}
+\end{example}
+
+
+
+\begin{example}[赋范线性空间]
+    \begin{enumerate}
+        \item $(\mathbb{R} ^n,\| \cdot \Vert_{K} )$，其中$\| \cdot \Vert_{K} :=\| x \Vert_{K}=\inf\{\lambda >0:x\in \lambda K\} ,K\mbox{是$0$的领域（$0\in \int{K},K=-K$）且是凸的、有界的闭集}$
+        \item $(C[a,b],\| \cdot \Vert_{\infty} )$，其中$\| \cdot \Vert_{\infty} :=\sup_{x\in [a,b]}|f(x)|$，则$(C[a,b],\| \cdot \Vert_{\infty} )$为 Banach 空间
+        \item $(C[a,b],\| \cdot \Vert_{1} )$，其中$\| \cdot \Vert_{1} :=\int_{a}^{b}|f(x)|dx$，则$(C[a,b],\| \cdot \Vert_{1} )$为不完备的赋范线性空间（$n.v.s.$）
+        \item $(C(\bar{\Omega } ),\| \cdot \Vert_{\infty} )$，其中$C(\bar{\Omega } ):=\{\mbox{一致连续函数}f:\Omega \to \mathbb{R} |\Omega \subset \mathbb{R} ^n\mbox{为开的有界集}\}$，$\| \cdot \Vert_{\infty} :=\sup_{x\in [a,b]}|f(x)|$
+        \item $(C(\bar{\Omega } ),\| \cdot \Vert_{1} )$，其中$C(\bar{\Omega } ):=\{\mbox{一致连续函数}f:\Omega \to \mathbb{R} |\Omega \subset \mathbb{R} ^n\mbox{为开的有界集}\}$，$\| \cdot \Vert_{1} :=\int_{a}^{b}|f(x)|dx$
+        \item $(C^k(\bar{\Omega } ),\| \cdot \Vert_{1,\infty} )$，其中$C^k(\bar{\Omega } ):=\{f\in C(\bar{\Omega }) |\mbox{对于}|\alpha |\le k \mbox{的数组}\alpha =(\alpha_1,\cdots,\alpha_n)\mbox{有}D^{\alpha }f\in C(\bar{\Omega }),\mbox{其中}\alpha _i\ge 0,|\alpha |= {\textstyle \sum_{i=1}^{n}}\alpha _i ,D^\alpha f(x)=\frac{\partial ^{|\alpha |}}{{\partial x_1}^{|\alpha _1|}\cdots {\partial x_n}^{|\alpha_n |}} \}$，$\| \cdot \Vert_{1,\infty}:=\| f \Vert_{1,\infty}=\sup _{x\in\Omega} |f(x)|+ {\textstyle \sum_{k=1}^{n}} \sup _{x\in\Omega} |\partial_k f(x)|,f\in C^1(\bar{\Omega }),\partial _kf(x)=\frac{\partial}{\partial x_k}f(x) $
+        \item $(C^k(\bar{\Omega } ),\| \cdot \Vert_{1,1} )$，其中$C^k(\bar{\Omega } ):=\{f\in C(\bar{\Omega }) |\mbox{对于}|\alpha |\le k \mbox{的数组}\alpha =(\alpha_1,\cdots,\alpha_n)\mbox{有}D^{\alpha }f\in C(\bar{\Omega }),\mbox{其中}\alpha _i\ge 0,|\alpha |= {\textstyle \sum_{i=1}^{n}}\alpha _i ,D^\alpha f(x)=\frac{\partial ^{|\alpha |}}{{\partial x_1}^{|\alpha _1|}\cdots {\partial x_n}^{|\alpha_n |}} \}$，$\| \cdot \Vert_{1,1}:=\| f \Vert_{1,1}=\int _\Omega |f|+ {\textstyle \sum_{k=1}^{n}} \int _\Omega |\partial_k f| ,f\in C^1(\bar{\Omega }),\partial _kf=\frac{\partial}{\partial x_k}f $
+    \end{enumerate}
+\end{example}
+\begin{example}[Banach 空间]
+    \begin{enumerate}
+        \item $L^p[a,b]$证明需要用到Holder不等式与Minkowski 不等式
+        \item $l^p(p\ge 1)$
+    \end{enumerate}
+\end{example}
+
+\begin{example}[内积空间]
+    \begin{enumerate}
+        \item $\mathbb{R} ^n:=\{(x^1,\cdots,x^n)^t:x^k\in \mathbb{R},1\le k\le n\}$，其中内积$(x,y)=x^tAy,x,y\in \mathbb{R} ^n,A\in \mathcal{M} _n$
+        \item $l^2:=\{x=(x_1,\cdots,x_n,\cdots):x_i\in \mathbb{R},\| x\Vert _2=(\sum_{k=1}^{\infty}x_k^2)^{\frac{1}{2}}\}$，其中内积$(x,y)=\sum_{k=1}^{\infty}x_ky_k,x=(x_1,\cdots,x_n,\cdots),y=(y_1,\cdots,y_n,\cdots)\in l^2$
+        \item $L^2(\Omega ):=\{f:\Omega\to \mathbb{R}:f\mbox{在}\Omega\mbox{上是平方可积函数},\int_{\Omega}f^2(x)dx<\infty\}$，其中内积$(u,v)_{L^2}=\int_{\Omega}u(x)v(x)dx$
+        \item $L_g^2(\Omega):=\{u:u\mbox{是可测函数且}\int_{\Omega}u^2g<\infty\}$，其中内积$(u,v)_{g}=\int_{\Omega}u(x)v(x)g(x)dx,g\in C(\Omega),g\ge 0,\int_{\Omega}g>0$
+        \item 乘积空间 $H_1\times H_2:=\{x_1\oplus x_2:x_i\in H_i,i=1,2\}$，其中内积$(x_1\oplus x_2,y_1\oplus y_2)_{H_1\times H_2}:=(x_1,y_1)_{H_1}+(x_2,y_2)_{H_2}$
+        \item $C_c^1(\Omega)$，其中内积为$(f,g)_{H_0^1}:=\int_{\Omega}f(x)g(x)dx+\sum_{k=1}^n\int_{\Omega}\partial_kf(x)\partial_kg(x)dx$
+    \end{enumerate}
+\end{example}
+
+\begin{example}[Helbert空间]
+    \begin{enumerate}
+        \item $\mathbb{R} ^n:=\{(x^1,\cdots,x^n)^t:x^k\in \mathbb{R},1\le k\le n\}$，其中内积$(x,y)=x^tAy,x,y\in \mathbb{R} ^n,A\in \mathcal{M} _n$
+        \item $l^2:=\{x=(x_1,\cdots,x_n,\cdots):x_i\in \mathbb{R},\| x\Vert _2=(\sum_{k=1}^{\infty}x_k^2)^{\frac{1}{2}}\}$，其中内积$(x,y)=\sum_{k=1}^{\infty}x_ky_k,x=(x_1,\cdots,x_n,\cdots),y=(y_1,\cdots,y_n,\cdots)\in l^2$
+        \item $L^2(\Omega ):=\{f:\Omega\to \mathbb{R}:f\mbox{在}\Omega\mbox{上是平方可积函数},\int_{\Omega}f^2(x)dx<\infty\}$，其中内积$(u,v)_{L^2}=\int_{\Omega}u(x)v(x)dx$
+        \item $H_0^1(\Omega)$，其中内积$(u,v)_{H_0^1}=\lim_{i\to \infty}(f^i,g^i)_{H_0^1}$，$H_0^1(\Omega)$是$C_c^1(\Omega)$的完备化
+    \end{enumerate}
+\end{example}
+
+
+\begin{example}[函数空间]
+    \begin{enumerate}
+        \item $C_c(\Omega):=\{f\in C(\bar{\Omega} ):\sup{f}\subset \Omega\mbox{是紧的}\}$
+        \item $C_c^k(\Omega):=C_c(\Omega)\cap C^k(\bar{\Omega})$
+        \item $C_c^{\infty}(\Omega):=C_c(\Omega)\cap C^{\infty}(\bar{\Omega})$
+    \end{enumerate}
+    且有$C_c^{\infty}(\Omega)\subset C_c^k(\Omega)\subset C_c(\Omega)\subset L^2(\Omega)$，可证$L^2(\Omega)$是紧的
+\end{example}
+
+
+\section{大定理}
+\begin{theorem}[闭凸集上的投影定理]
+    设$K\subset H$是一个非空闭凸集，则对于任意一个$f\in H$，都存在唯一一个点$u\in K$，使得
+    $$|f-u|=\min_{v\in K}|f-v|=d(K,f)$$
+    此外，它的一个突出特征是：
+    $$u\in K and (f-u,v-u)\le 0,\forall v\in K$$
+    \begin{proof}
+        不失一般性，我们假设$f\in K$，$(v_n)_{n\ge 1}$是$K$中的序列。且有$\lim_{n\to \infty}|f-v_n|=d(K,f)=:d=\lim_{n\to \infty}d_n$，其中$d_n=|f-v_n|$
+    \end{proof}
+\end{theorem}
+\begin{remark}
+    并将$P_Kf=u\in K,s.t. |u-f|=d(K,f)$记为$f$在闭凸集$K\subset H$上的投影
+\end{remark}
+\begin{remark}
+    度量投影算子$P_k$是一个压缩算子（若对于任意$x,y\in H$，有$|P_Kx-P_Ky|\le |x-y|$，则算子$P_K$称为压缩算子）。对于特殊的闭凸集，则有更加优良性质。例如闭的线性子空间$M\subset H$作为投影的闭凸集，则有$(f-P_Mf,v)=0$（这与一般的闭凸子集只有$(f-u,v-u)\le 0$是不同的）。并将闭线性子空间上的投影$P_Mf$称为$f\in H$在$M$上的正交投影，并可证明投影算子$P_M$是线性的。
+\end{remark}
+
+
+
+
+
+
+
+
+\begin{theorem}[Riesz-Frechet表示定理]
+    对于任意给定的泛函$\varPhi \in H^{\ast}$，都存在唯一一个$u\in H$，使得对于每一个$v\in H$，有$\varPhi (v)=\langle \varPhi ,v\rangle_{H^{\ast},H}=(u,v) $。此外，$\| \varPhi \Vert_{H^{\ast}}=|u|_H =\langle u,u\rangle^{\frac{1}{2}} $
+\end{theorem}
+\begin{remark}
+    Riesz-Frechet表示定理是使用内积表示泛函，这种表示方式可以从线性代数中可见一斑，在处理线性映射时，使用矩阵表示线性映射是一个非常出色的方法（与代数表示论有关）。而泛函的本质是映射，那我们是否也可以这样处理了（上面的矩阵表示在有限维线性映射的情况下当然没有问题，但这里的泛函是无限维的）Riesz则给出了肯定的答案。
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[Lax-Milgram定理]
+    若Helbert 空间$(H,(\cdot ,\cdot ))$上的一个双线性形式$a(\cdot ,\cdot )$（$a:H\times H\to \mathbb{R} $）是连续的（存在一个常数$C$，使得对于所有$u,v\in H$，有$|a(u,v)|\le C|u||v|$）、强制的（存在一个常数$\alpha$，使得对于每一个$v\in H$，有$a(v,v)\ge \alpha|v|^2$）的双线性形式，则对于任意一个$\varPhi \in H^{\ast}$，存在唯一一个$u\in H$，使得对于每一个$v\in H$有：
+    $$a(u,v)=\langle \varPhi ,v\rangle $$
+    此外，如果$a(\cdot ,\cdot )$是对称的，则它的一个突出特征是：
+    $$u\in H and \frac{1}{2}a(u,u)-\langle \varPhi ,u\rangle =\min_{v\in H}\{\frac{1}{2}a(u,u)-\langle \varPhi ,v\rangle\}$$
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[弱解的存在性]
+    \begin{enumerate}
+        \item Dirichlet问题总是存在一个弱解。
+        \item 如果$f\in C^2(\bar{\Omega})$是该问题的一系列解，则$u$必然是一个弱解。
+    \end{enumerate}
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[Fredholm择一定理]
+    \begin{enumerate}
+        \item 零空间$N(I-K)$是有限维
+        \item 值域$R(I-K)$是闭集，更准确地说$R(I-K)=N(I-K^{\ast})^{\bot }$
+        \item 零空间$N(I-K)=\{0\}$当且仅当$R(I-K)=H$
+        \item $\dim N(I-K)=\dim N(I-K^{\ast})$
+    \end{enumerate}
+\end{theorem}
+\begin{remark}
+    该定理在Banach空间与Helbert空间中都成立
+\end{remark}
+\begin{remark}
+    其与特征值、特征向量有关
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[Baire 纲定理]
+    设序列$\{X_n\}_{n\ge 1}$是由完备度量空间$X$上的闭子空间组成。若
+    $$int {X_n}=\emptyset ,n\ge 1$$
+    则
+    $$int(\bigcup _{n=1}^{\infty}X_n)=\emptyset$$
+\end{theorem}
+\begin{remark}
+    \begin{enumerate}
+        \item 如果$int{A}=\emptyset$，则称集合$A$是无处稠密的
+        \item 如果对于$n\ge 1$，有$O_n$是开集，$\overline{O_n}=X $，则$\overline{\cap _{n=1}^{\infty }O_n}=X $（$X$不一定是开集）
+        \item 如果$\bigcup _{n=1}^{\infty}X_n=X$，则一定存在一个$n_0$使得$int{X_{n_0}}\neq \emptyset$
+        \item 稀疏（$int X=\emptyset$），稠密（$\overline{O}=X$）。稀疏的并，稠密的交，仍能保持其固有的性质，反之具有该性质，则组成该集合的子集也有相关的性质。
+    \end{enumerate}
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[Banach-Steinhaus一致有界原则]
+    设$(T_i)_{i\in I}$为Banach空间$E,F$之间的一族（不要求可数）连续线性算子，如果
+    $$\sup_{i\in I}\| T_ix\Vert < \infty ,x\in E $$
+    则
+    $$\sup_{i\in I}\| T_i\Vert_{\mathcal{L} (E,F)} < \infty $$
+    等价于存在一个常数$c$，有
+    $$\| T_ix\Vert \le c\| x\Vert ,x\in E,i\in I$$
+\end{theorem}
+\begin{remark}
+    这个定理告诉我们可以由逐点估计获得全局估计。
+\end{remark}
+\begin{remark}
+    设$(T_n)_{n=1}^{\infty }\subset \mathcal{L} (E,F)$为Banach空间$E,F$之间的一族连续线性算子，如果对于每一个$x\in E$，有$T_nx$收敛到$Tx$，则
+    \begin{enumerate}
+        \item $\sup_{n\in \mathbb{N} }\| T_n\Vert < \infty $
+        \item $T\in \mathcal{L} (E,F)$
+        \item $\| T\Vert \le \underline{\lim}_{n\to \infty} \| T_n\Vert$
+    \end{enumerate}
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[开映射定理]
+    设$T\in \mathcal{L} (E,F)$为Banach空间$E,F$之间的满射，则存在一个常量$c$，使得
+    $$T(B_E(o,1))\supset B_F(o,c)$$
+\end{theorem}
+\begin{remark}
+    \begin{enumerate}
+        \item 如果我们另外假设$T$是单射，则$T^{-1}$是连续的，因此$T$是同胚的。
+        \item 设$U$为开集，$y_0\in T(U)$，则存在$B(x_0,r)\subset U$满足$Tx_0=y_0,r>0$。则$T(U)\supset T(x_0)+T(B(o,r))\supset y_0+B(o,c)=B(y_0,c)$，这意味着$T(U)$是开集。也就是说映射$T$将开集映为开集。反之，如果线性映射$T:E\to F$将开集映为开集，则$T$必然为满射。
+        \item 显然，双射$T$将开集映为开集，当且仅当双射$T$将闭集映为闭集。然而，如果映射$T\in \mathcal{L} (E,F)$是满射但不是单射，则$T$不一定能将闭集映为闭集。
+    \end{enumerate} 
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[闭图像定理]
+    设$T$为Banach空间$E,F$之间的线性算子，若算子$T$的图像
+    $$G(T):=\{(x,Tx)\in E\times F:x\in E\}$$
+    在$E\times F$上是闭集，则$T$是连续算子。
+\end{theorem}
+\begin{remark}
+    任意连续映射的图像都是闭集
+\end{remark}
+\begin{remark}
+    $E\times F$上的范数定义为
+    $$\| (x,y)\Vert_{E\times F} =\| x\Vert_E +\| y\Vert _F,(x,y)\in E\times F$$
+    并可以验证得知$E\times F$为Banach 空间。
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{lemma}[Zorn 引理]
+    若一个偏序集$(A,\le )$的任意全序子集$S$在$A$中都有上界，即
+    $$\exists a\in A,\forall x\in S,x\le a$$
+    则$A$有极大元
+\end{lemma}
+\begin{remark}
+    这个引理中的偏序集条件不能减弱为拟序集。Zorn 引理也可以简化为每个归纳的非空有序集都有一个最大元素。
+\end{remark}
+\begin{remark}
+    Zorn 引理是集合论中的著名公理，它和选择公理（设$T=\{A_i,i\in I\}$为一族非空集合，$I$是自然数的某有限子集，那么存在映射$\varphi :T\to \bigcup _{i\in I}A_i,A_i\mapsto \varphi(A_i)\in A_i$，函数$\varphi$被称为选择函数。）以及良序公理（任何集合上都可以定义一个良序，借助良序公理可以将数学归纳法推广到任意良序集上去，得到超限数学归纳法）是等价的。
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{theorem}[Hahn-Banach 延拓定理]
+    线性空间$E$上的次线性泛函$p:E\to \mathbb{R} $
+    \begin{enumerate}
+        \item 次可加性：对任意$x,y\in E$，有$p(x+y)\le p(x)+p(y)$
+        \item 齐次性：对任意$x\in E,\lambda >0$，有$p(\lambda x)=\lambda p(x)$
+    \end{enumerate}
+    线性空间的线性子空间$G\subset E$上的线性泛函$g:G\to \mathbb{R} $
+    \begin{enumerate}
+        \item 可加性：对任意$x,y\in E$，有$g(x+y)= g(x)+g(y)$
+        \item 齐次性：对任意$x\in E,\lambda >0$，有$g(\lambda x)=\lambda g(x)$
+    \end{enumerate}
+    其中
+    $$g(x)\le p(x),x\in G$$
+    若线性泛函$f:E\to \mathbb{R} $有：
+    \begin{equation*}
+        f(x)=\left\{\begin{matrix}
+            g(x)\le p(x)&x\in G\\
+            f(x)\le p(x)&x\in E\setminus G
+           \end{matrix}\right.
+    \end{equation*}
+    则称泛函$f$为泛函$g$在$E$上的延拓。
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+\begin{remark}
+    Hahn-Banach 延拓定理还具有几何形式。设$A,B\subset E$是非空凸集，且满足$A\cap B=\emptyset $。若这两个非空凸集中有一个是开集，则存在一个闭的超平面分割$A$与$B$。
+\end{remark}
+\begin{remark}
+    该定理有代数与几何两种形式，几何形式中涉及了超平面，在最优化与机器学习中有较为重要的应用
+\end{remark}
+\begin{remark}
+    在有限维中，构建线性泛函是一件极为平常之事（可以找到合适的基），但在无限维上这并不直观。于是一个曲线的方法便有了，即在无限维空间中找一个有限维子空间，由之前讨论知道，肯定可以构建线性泛函，如果可以将该泛函延拓到整个空间不就可以了吗。为了更加普遍的情况，这里的有限维子空间改为在任意子空间上的线性泛函都可以延拓到整个空间中，从而在无限维空间中构造合适的线性泛函。
+\end{remark}
+
+
+
+\section{例题}
+\begin{proposition}[HW1-2]
+    设$X=\{x=(x_1,x_2,\cdots)|x_i\in \mathbb{R} ^n,i=1,2,\cdots \}$是一个无限维序列空间，对于$x=(x_n)_{n\ge 1},y=(y_n)_{n\ge 1}$，我们定义：
+    $$d(x,y)=\sum_{i=1}^{\infty }\frac{1}{2^i}\frac{|x_i-y_i|}{1+|x_i-y_i|}$$
+    证明$d$是一个距离函数。
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+
+
+
+
+
+\begin{proposition}[HW1-7]
+    设$(X,d)$是一个完备的度量空间，并设$K\subset X$是相对紧的，证明$K$是可分的。
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+
+
+
+
+
+\begin{proposition}[HW1-8]
+    将赋范线性空间$(E,\| \cdot \Vert )$上的单位球定义为$B_E=\{x\in E:\| x\Vert \le 1\}$，证明：
+    \begin{enumerate}
+        \item （Riesz引理）如果$E_0\subset E$是一个闭子空间，且$E_0\ne E$，则对于任意的$0<\epsilon <1$，存在一个点$x_0\in E$，有$\| x_0\Vert=1 $，并且对于每一个$x\in E_0$，有$\| x_0-x\Vert>\epsilon $
+        \item 如果$dim{E}=n$，证明$E$拓扑同构于$\mathbb{R} ^n$，即存在一个双线性映射$f:E\to \mathbb{R} ^n$使得$f$与$f^{-1}$都是连续函数。
+        \item 使用Riesz引理证明$B_E$是紧的，当且仅当$E$是有限维的。
+    \end{enumerate}
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+
+
+
+
+
+\begin{proposition}[HW2-3]
+    设$E$是一个赋范线性空间，$f:E\to \mathbb{R} $是一个（ does not vanish identically）线性函数，设$\alpha \mathbb{R} $，证明$f$连续当且仅当$H=[f=\alpha]$是闭集（$[f=\alpha]=\{x\in E:f(x)=\alpha\}$）
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+
+
+
+
+
+
+
+\begin{proposition}[HW2-8][Hilbert空间上Hahn-Banach延拓定理的几何形式]
+    设$H$是一个Helbert空间，$A,B\subset H$是非空凸子集。如果$A$是紧的，$B$是闭的，且$A\cap B=\emptyset$，证明存在一个闭的超平面将$A$和$B$强制分割，也就是说存在一个闭的超平面$M_{u,\alpha}$
+    $$M_{u,\alpha }=\{v\in H:(u,v)=\alpha\}$$
+    对于一些$u\in H\setminus   \{0\},\alpha \in \mathbb{R} ,\varepsilon >0$，使得
+    $$(u,\alpha)>\alpha +\varepsilon,(u,b)<\alpha -\varepsilon,\forall a\in A,b\in B$$
+    提示：$A-B:\{a-b:a\in A,b\in B\}$
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+
+
+
+
+
+
+\begin{proposition}[HW3-7]
+    设$H$是一个Helbert空间，若$T\in \mathcal{L} (H)$是一个自伴随算子，证明下述命题等价：
+    \begin{enumerate}
+        \item $(Tu,u)\le |Tu|^2,\forall u\in H$
+        \item $(0,1)\in \rho (T)$
+    \end{enumerate}
+    提示：使用$U=2T-I$
+    \begin{proof}
+        \begin{enumerate}
+            \item set $U:=2T-I \Rightarrow U\in \mathcal{L} (H),U=U^\ast $（$U$是有界线性泛函，也是自伴随算子）
+            
+            $(Uu,Uu)=4(Tu,Tu)-4(Tu,u)+(u,u) \Rightarrow (Uu,Uu)-(u,u)=4(Tu,Tu)-4(Tu,u)$that is to say $|Uu|^2\ge |u|^2,\forall u\in H$
+            \item $2(T-\lambda I)u=2v \Rightarrow (2T-I-(2\lambda-1)I)u=2v \Rightarrow (U-(2\lambda-1)I)u=2v$ that is to say $\lambda \in \rho (T)$iff$(2\lambda -1)\in \rho(T)$，$i.e. (-1,1)\in \rho(T)$
+            \item $\forall f\in N(U),\forall y\in R(U),y=Ux,x\in H,(f,y)=(f,Ux)=(Uf,x)=(0,x)=0 \Rightarrow f\in R(U)^T\Rightarrow N(U)\subseteq R(U)^T$
+            
+            $\forall f\in R(U)^T,(f,Ux)=0,(Uf,x)=0,\Rightarrow Uf=0\Rightarrow f\in N(T)\Rightarrow R(U)^T\subseteq N(0)$
+
+            $N(U)=R(U)^T$
+            \item $\lambda \in \rho(U)\Leftrightarrow \frac{1}{\lambda }\in \rho (U^{-1})$
+            
+            By Thm3.10$m=\inf_{|u|=1}(U^{-1}u,u),M=\sup_{|u|=1}(U^{-1}u,u),n,M\subseteq \sigma (U^{-1})\subset[-1,1],-1\le \frac{(U^{-1}u,u)}{|u|^2}\le 1\Rightarrow |(U^{-1}u,u)|\le |u|$
+
+            $(U^{-1}(u+v),(u+v))-(U^{-1}(u-v),(u-v))=4(U^{-1}u,v)\Rightarrow 4|(U^{-1}u,u)|\le |(U^{-1}(u+v),(u+v))|+|(U^{-1}(u-v),(u-v))|\le |u+v|^2+|u-v|^2=2(|u|^2+|v|^2)$
+
+            set $U^{-1}u=v\Rightarrow |U^{-1}u|^2\le |u|^2\Leftrightarrow (-1,1)\subset \rho (U)$
+            
+        \end{enumerate}
+    \end{proof}
+\end{proposition}
+
+
+
+
+
+
+
+
+
+\begin{proposition}[HW3-8][Hilbert空间上Banach-Alaoglu定理的几何形式]
+    证明Helbert空间中的（闭的）单位球$B_H$是sequentially weak-compact（对于每一个序列$(x_n)_{n\ge 1}\subset B_H$，其存在一个子序列$(x_{n_k})_{k\ge 1}$弱收敛到$B_H$中一点）
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+
+
+
+
+
+
+
+\begin{proposition}[HW4-4]
+    设$E$是Banach空间，并设$T:E\to E^{\ast}$是一个线性算子，且有
+    $$\langle Tx,x\rangle\ge 0,\forall x\in E $$
+    证明$T$是一个有界算子。
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+
+
+
+
+
+
+%asd\cite{MR3223042}
+%\bibliographystyle{acm}                      % 参考文献编译格式
+%\bibliography{refs.bib}                      % 文件位置
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{preliminary}
+\begin{definition}[向量空间（$v.s.$）]
+    数域$\mathcal{F} (=\mathbb{R} or \mathbb{C} )$上的向量空间是一个含有以下两种算子的集合：
+    \begin{enumerate}
+        \item 加法（$+:V+V\to V.$ ）：$V$中的加法$+$是一个满足交换律与结合律并含有幺元与逆元的 Abelian 群。
+        \item 数乘（$p:\mathcal{F} \times V\to V$）：$V$中的数乘$p$是一个满足结合律与分配律的含幺结合代数。
+    \end{enumerate}
+\end{definition}
+\begin{example}[数域$\mathbb{R} $的向量空间（$v.s.$）]
+    \begin{enumerate}
+        \item $X=\{p(t):t\in \mathbb{R} \mbox{的多项式}\}$
+        \item $C[a,b]=\{f(t):t\in[a,b]\mbox{的连续函数}\}$
+        \item $\mathbb{R} ^n$（有限维数组空间）
+        \item $X=\{(x_1,x_2,\cdots):x_i\in \mathbb{R} ,i\in \mathbb{N} ^+\}$（实值序列构成的空间）
+    \end{enumerate}
+\end{example}
+\begin{definition}赋范线性空间（$n.v.s.$）
+    赋范线性空间$E$是一个定义在数域$\mathcal{F} $，且含有满足下面三个条件的泛函（$\| \cdot \Vert :E\to \mathbb{R} $）的向量空间
+    \begin{enumerate}
+        \item 对于所有$x,y\in E$有$\| x+y \Vert \le \| x \Vert +\| y \Vert $
+        \item 对于每一个$x\in E,\alpha \in \mathcal{F} $有$\| \alpha x \Vert =|\alpha |\cdot \| x \Vert$
+        \item $\|x \Vert\ge 0 $，当且仅当$x=0$时，$\|x \Vert = 0$
+    \end{enumerate}
+    这里的泛函被称为范数。有时我们记赋范线性空间$E$为$(E,\| \cdot\Vert )$，或者简写为$n.v.s.$
+\end{definition}
+\begin{definition}
+    度量空间是一个含有对于所有$x,y,z\in X$满足下面三个条件的泛函$d:X\times X\to \mathbb{R} $的集合
+    \begin{enumerate}
+        \item 三角不等式$d(x,y)\le d(x,z)+d(z,y)$
+        \item $d(x,y)=d(y,x)$
+        \item $d(x,y)\ge 0$当且仅当$x=y$时，$d(x,y)=0$
+    \end{enumerate}
+    这里的范数$d(\cdot,\cdot)$被称为距离函数（度量函数）。有时我们记度量空间$X$为$(X,d)$。对于$(X,d)$中的序列$(x_k)_{k\ge 1}$我们简写为$(x_k)$。
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 度量空间$(X,d)$中极限的定义：对于度量空间$(X,d)$中的序列$(x_k)$与点$\bar{x}$，如果$\lim_{k\to \infty}d(x_k,\bar{x} )=0$，则说明序列$(x_k)$收敛到点$\bar{x}$，并简记为$\lim_{k\to \infty}x_k=\bar{x}$。
+        \item 度量空间$(X,d)$中 Cauchy 列的定义：对于度量空间$(X,d)$中的序列$(x_k)$，如果$\lim_{i,j\to \infty}d(x_k,x_j)=0$，则该序列为 Cauchy 列。
+        \item 度量空间$(X,d)$中的完备性定义：对于度量空间$(X,d)$中的每一个 Cauchy 列$(x_n)_{n\ge 1}$都存在一个点$x_0\in X$有$\lim_(n\to \infty)d(x_n,x_0)=0$
+        \item 赋范线性空间诱导出的度量：对于赋范线性空间$(E,\| \cdot\Vert )$（$n.v.s.$），我们定义空间$E$上的度量函数为$d(x,y)=\| x-y\Vert $，则空间$(E,d)$被称为度量空间。（自己证明）
+        \item Banach 空间的定义：完备的赋范线性空间也被称为Banach 空间。
+    \end{enumerate}
+\end{remark}
+
+\begin{example}[赋范线性空间（$n.v.s.$）]
+    \begin{enumerate}
+        \item $(\mathbb{R} ^n,\| \cdot \Vert_{K} )$，其中$\| \cdot \Vert_{K} :=\| x \Vert_{K}=\inf\{\lambda >0:x\in \lambda K\} ,K\mbox{是$0$的领域（$0\in \int{K},K=-K$）且是凸的、有界的闭集}$
+        \item $(C[a,b],\| \cdot \Vert_{\infty} )$，其中$\| \cdot \Vert_{\infty} :=\sup_{x\in [a,b]}|f(x)|$，则$(C[a,b],\| \cdot \Vert_{\infty} )$为 Banach 空间
+        \item $(C[a,b],\| \cdot \Vert_{1} )$，其中$\| \cdot \Vert_{1} :=\int_{a}^{b}|f(x)|dx$，则$(C[a,b],\| \cdot \Vert_{1} )$为不完备的赋范线性空间（$n.v.s.$）
+        \item $(C(\bar{\Omega } ),\| \cdot \Vert_{\infty} )$，其中$C(\bar{\Omega } ):=\{\mbox{一致连续函数}f:\Omega \to \mathbb{R} |\Omega \subset \mathbb{R} ^n\mbox{为开的有界集}\}$，$\| \cdot \Vert_{\infty} :=\sup_{x\in [a,b]}|f(x)|$
+        \item $(C(\bar{\Omega } ),\| \cdot \Vert_{1} )$，其中$C(\bar{\Omega } ):=\{\mbox{一致连续函数}f:\Omega \to \mathbb{R} |\Omega \subset \mathbb{R} ^n\mbox{为开的有界集}\}$，$\| \cdot \Vert_{1} :=\int_{a}^{b}|f(x)|dx$
+        \item $(C^k(\bar{\Omega } ),\| \cdot \Vert_{1,\infty} )$，其中$C^k(\bar{\Omega } ):=\{f\in C(\bar{\Omega }) |\mbox{对于}|\alpha |\le k \mbox{的数组}\alpha =(\alpha_1,\cdots,\alpha_n)\mbox{有}D^{\alpha }f\in C(\bar{\Omega }),\mbox{其中}\alpha _i\ge 0,|\alpha |= {\textstyle \sum_{i=1}^{n}}\alpha _i ,D^\alpha f(x)=\frac{\partial ^{|\alpha |}}{{\partial x_1}^{|\alpha _1|}\cdots {\partial x_n}^{|\alpha_n |}} \}$，$\| \cdot \Vert_{1,\infty}:=\| f \Vert_{1,\infty}=\sup _{x\in\Omega} |f(x)|+ {\textstyle \sum_{k=1}^{n}} \sup _{x\in\Omega} |\partial_k f(x)|,f\in C^1(\bar{\Omega }),\partial _kf(x)=\frac{\partial}{\partial x_k}f(x) $
+        \item $(C^k(\bar{\Omega } ),\| \cdot \Vert_{1,1} )$，其中$C^k(\bar{\Omega } ):=\{f\in C(\bar{\Omega }) |\mbox{对于}|\alpha |\le k \mbox{的数组}\alpha =(\alpha_1,\cdots,\alpha_n)\mbox{有}D^{\alpha }f\in C(\bar{\Omega }),\mbox{其中}\alpha _i\ge 0,|\alpha |= {\textstyle \sum_{i=1}^{n}}\alpha _i ,D^\alpha f(x)=\frac{\partial ^{|\alpha |}}{{\partial x_1}^{|\alpha _1|}\cdots {\partial x_n}^{|\alpha_n |}} \}$，$\| \cdot \Vert_{1,1}:=\| f \Vert_{1,1}=\int _\Omega |f|+ {\textstyle \sum_{k=1}^{n}} \int _\Omega |\partial_k f| ,f\in C^1(\bar{\Omega }),\partial _kf=\frac{\partial}{\partial x_k}f $
+    \end{enumerate}
+\end{example}
+\begin{definition}[度量空间中的开集、闭集]
+    对于集合$A\subset X$中的点$x$，存在$A$中的开球$B(x,r):=\{z\in X|d(z,x)<r,r>0\}$，则称集合$A$为开集。
+
+    对于集合$A\subset X$，如果$A^c=\{x\in X|x\notin A\}$为开集，则称集合$A$为闭集。
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item 对于集合$A\subset X$，则有$A$的内部$\int{A}:=\{x\in A|\mbox{存在开球}B(x,r)\subset A,r>0\}$，并将点$x\in \int{A}$称为$A$的内点。
+        
+        %$A$的内部也可由度量空间中的序列定义：$\int{A}:=\{x\in A|\exists (x_k)\in A ,\mbox{有}\lim_{k\to \infty}d(x_k,x)=0\}$
+
+        易证$\int{A}$为开集，且$A$为开集当且仅当$A=\int{A}$
+        \item 对于集合$A\subset X$，则有$A$的闭包$\bar{A}:=(\int{(A^c)})^c$
+        
+        $A$的闭包也可由度量空间中的序列定义：$\bar{A}:=\{x\in A|\forall  (x_k)\in A ,\exists x\in \bar{A},\mbox{有}\lim_{k\to \infty}d(x_k,x)=0\}$
+
+        易证$\bar{A}$为闭集，且$A$为开集当且仅当$A=\bar{A}$
+    \end{enumerate}
+\end{remark}
+\begin{remark}
+    \begin{enumerate}
+        \item 易证开球、全集（$X$）为开集，并规定$\emptyset $为开集。
+        \item 易证闭球$\bar{B}(x,r):=\{z\in X|d(z,x)\le r,r>0\}$，全集（$X$），$\emptyset $为闭集。
+        \item 开集$A_\alpha $的无穷并$\bigcup _{\alpha \in I}A_{\alpha }$仍为开集
+        \item 开集$A_k $的有限交$\bigcap _{k=1}^{m}A_{k}$仍为开集
+        \item 闭集$A_k $的有限并$\bigcup _{k=1}^{m}A_{k}$仍为闭集
+        \item 闭集$A_\alpha $的无穷交$\bigcap _{\alpha \in I}A_{\alpha }$仍为闭集
+    \end{enumerate}
+\end{remark}
+\begin{example}[开集]
+    \begin{enumerate}
+        \item 有限维数组空间$\mathbb{R} ^n$
+        \item 离散度量空间$(A,d)$，其中$d(x,y)=1 or 0$当且仅当$x=y$时，$d(x,y)=0$。它的每一个子空间既是开集也是闭集
+        \item 赋范线性空间的有限维线性子空间是闭集，但其无限维线性子空间不一定为闭集
+        \item 有界线性算子空间$T(L^1(\mathbb{R} ))$
+    \end{enumerate}
+\end{example}
+
+\begin{definition}[紧性]
+    \begin{enumerate}
+        \item 预紧（紧性的必要条件）：对于度量空间$(X,d)$中的子集$K$，如果$K$的每一个序列$(x_k)_{k\ge 1}$都有收敛子列$\lim_{i\to\infty}x_{k_i}\to x$，其中$x\in X$，（不要求子列的极限在子集$K$中），则称子集$K$是预紧的。
+        \item 紧的（紧性的充分条件）：对于度量空间$(X,d)$中的子集$K$，如果$K$既是预紧的，也是有界的，则子集$K$是紧的。
+        \item 完全有界的（紧性的必要条件）：对于度量空间$(X,d)$中的子集$K$，如果存在大小可控的有限个开球的覆盖，即$\forall \varepsilon >0,\exists \mbox{有限多个开球}B(x_i,\varepsilon ),x_i\in K,i\in\{1,2,\cdots,m\},\mbox{使得}\bigcup _{i=1}^{m}B(x_i,\varepsilon )\supset K$
+    \end{enumerate}
+\end{definition}
+\begin{definition}[子覆盖]
+    asd
+\end{definition}
+\begin{theorem}
+    $K$是紧的当且仅当$K$的任意开覆盖存在有限子覆盖
+\end{theorem}
+
+
+
+
+
+
+\section{Helbert 空间}
+
+\section{紧算子、基、可分性、稠密性、完备性}
+
+\section{闭图像定理}
+\section{对偶空间}
+
+asd\cite{MR3223042}
+\bibliographystyle{acm}                      % 参考文献编译格式
+\bibliography{refs.bib}                      % 文件位置
+
+\end{document}                               % 主体区结束
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{acm}                      % 参考文献编译格式
+\bibliography{refs.bib}                      % 文件位置
+
+
+\begin{thebibliography}{99}
+\bibitem{1} 参考文献1
+\bibitem{2} 参考文献2
+\end{thebibliography}
+
+\begin{appendix}
+\section{附录1}
+\section{附录2}
+\end{appendix}
+
+\end{document}
+
+
+
+
