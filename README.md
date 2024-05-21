@@ -1,2 +1,2 @@
 # functional-analysis
-上海大学泛函分析讲义笔记
+SHU泛函分析讲义笔记
